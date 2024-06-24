@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Organization Chart</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'homepage.css' %}" />
+    <link href="{% static 'chart.css' %}" rel="stylesheet"type="text/css"/>
+    <!-- Unicons CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+    <script src="{% static 'homepage.js' %}" defer></script>
+  </head>
+  <style>
+    /* Dropdown Button */
+    .dropbtn {
+      background-color: #4b16ad;
+      color: white;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    /* Dropdown button on hover & focus */
+    .dropbtn:hover,
+    .dropbtn:focus {
+      background-color: grey;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+    .show {
+      display: block;
+    }
+
+    .center {
+      text-align: center;
+    }
+  </style>
+  <body>
+    <nav class="nav">
+      <i class="uil uil-bars navOpenBtn"></i>
+      <a href="{% url 'home' %}" class="logo">SEDAYA</a>
+
+      <ul class="nav-links">
+        <i class="uil uil-times navCloseBtn"></i>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'registration' %}">Registration</a></li>
+        <li><a href="{% url 'booking' %}">Booking</a></li>
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">
+            About Us
+            <i class="uil uil-bars navOpenBtn"></i>
+          </button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="{% url 'aboutus' %}">About Us</a>
+            <a href="{% url 'chart' %}">Organization Chart</a>
+          </div>
+        </div>
+        <h4> Welcome, {{ Login.username }}</h4>
+      </ul>
+    </nav>
+    <br /><br /><br />
+    <h1 class="center" style="color: #000000">Organization Chart</h1>
+
+    <div class="container">
+			<div class="row">
+				<div class="tree">
+					<ul>
+						<li> <a href="#"><img src="images/1.jpg"><span>President</span></a>
+						<ul>
+							<li><a href="#"><img src="images/2.jpg"><span></span></a>
+							<ul>
+								<li> <a href="#"><img src="images/3.jpg"><span></span></a> </li>
+								<li> <a href="#"><img src="images/4.jpg"><span></span></a> </li>
+							</ul>
+						</li>
+						<li> <a href="#"><img src="images/5.jpg"><span></span></a>
+						<ul>
+							<li> <a href="#"><img src="images/6.jpg"><span></span></a> </li>
+							<li> <a href="#"><img src="images/7.jpg"><span></span></a> </li>
+							<li> <a href="#"><img src="images/8.jpg"><span></span></a> </li>
+						</ul>
+					</li>
+					<li><a href="#"><img src="images/9.jpg"><span></span></a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+    <script>
+      /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      // Close the dropdown menu if the user clicks outside of it
+      window.onclick = function (event) {
+        if (!event.target.matches(".dropbtn")) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
+            }
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
